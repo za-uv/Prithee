@@ -1,11 +1,18 @@
 package org.example;
 
-import java.util.Random;
+import java.util.SplittableRandom;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main() {
+    static void main()
+    {
+        SplittableRandom rand = new SplittableRandom();
+        prithee(rand);
+    }
+
+    public static boolean prithee(SplittableRandom rand)
+    {
         String prithee = "Shall I compare thee to a summer’s day?\n" +
                 "Thou art more lovely and more temperate:\n" +
                 "Rough winds do shake the darling buds of May,\n" +
@@ -20,13 +27,12 @@ public class Main {
                 "When in eternal lines to time thou grow’st:\n" +
                 "   So long as men can breathe or eyes can see,\n" +
                 "   So long lives this, and this gives life to thee.\n";
-        
+
         // Useful variables, split prithee into an array
         String[] pritheeTokens = prithee.split(" ");
         String guess = "";
         int correctGuesses = 0;
         int wrongGuesses = 0;
-        Random rand = new Random();
 
         // Keep track of guesses, each loop will eventually trigger the conditional check,
         while (correctGuesses < 3 && wrongGuesses < 3)
@@ -41,7 +47,7 @@ public class Main {
                     }
                     IO.println("\nGuess: ");
                     guess = IO.readln();
-                    
+
                     if (guess.equals(pritheeTokens[i])) correctGuesses++;
                     else wrongGuesses++;
 
@@ -54,6 +60,8 @@ public class Main {
                 }
             }
         }
+
+        return correctGuesses == 3;
     }
 }
 
